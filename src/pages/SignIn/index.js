@@ -12,12 +12,14 @@ import {
   LinkText,
 } from './styles';
 import {useNavigation} from '@react-navigation/native';
-import SignUp from '../SignUp';
+import { AuthContext } from '../../contexts/auth';
 
 export default function SignIn() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  
 
   return (
     <Background>

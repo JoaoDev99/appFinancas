@@ -17,11 +17,11 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {signUp} = useContext(AuthContext);
+  const {register} = useContext(AuthContext);
 
-  function handleSignUp() {
-    signUp(email, password, name);
-  }
+  // function handleSignUp() {
+  //   register(email, password, name);
+  // }
 
   return (
     <Background>
@@ -56,7 +56,7 @@ export default function SignIn() {
           />
         </AreaInput>
 
-        <SubmitButton onPress={handleSignUp()}>
+        <SubmitButton onPress={() => register(name, email, password)}>
           <SubmitText>Cadastrar</SubmitText>
         </SubmitButton>
       </Container>
