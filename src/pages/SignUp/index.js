@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Platform} from 'react-native';
 import {
   Background,
@@ -10,22 +10,29 @@ import {
   SubmitText,
 } from '../SignIn/styles';
 
+import {AuthContext} from '../../contexts/auth';
+
 export default function SignIn() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const {signUp} = useContext(AuthContext);
+
+  function handleSignUp() {
+    signUp(email, password, name);
+  }
+
   return (
     <Background>
       <Container behavior={Platform.OS === 'ios' ? 'padding' : ''} enabled>
-        <Logo source={require('../../assets/Logo.png')} />
-
         <AreaInput>
           <Input
             placeholder="Nome"
             autoCorrect={false}
             autoCapitalize="none"
-            value={nome}
-            onChangeText={text => setNome(text)}
+            value={name}
+            onChangeText={text => setName(text)}
           />
         </AreaInput>
 
@@ -49,8 +56,8 @@ export default function SignIn() {
           />
         </AreaInput>
 
-        <SubmitButton>
-          <SubmitText>Acessar</SubmitText>
+        <SubmitButton onPress={handleSignUp()}>
+          <SubmitText>Cadastrar</SubmitText>
         </SubmitButton>
       </Container>
     </Background>

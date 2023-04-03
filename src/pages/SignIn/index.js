@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
 import {Platform} from 'react-native';
-import parseErrorStack from 'react-native/Libraries/Core/Devtools/parseErrorStack';
 import {
   Background,
   Container,
@@ -49,7 +48,7 @@ export default function SignIn() {
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
 
-        <Link onPress={ () => navigation.navigate('SignUp')}>
+        <Link onPress={() => navigation.navigate('SignUp')}>
           <LinkText>Criar uma conta</LinkText>
         </Link>
       </Container>
